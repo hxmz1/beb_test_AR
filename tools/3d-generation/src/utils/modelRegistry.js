@@ -7,9 +7,21 @@ export const modelRegistry = Object.fromEntries(
   ]),
 );
 
+const modelViewers = new Map();
+
 export const getModelInfo = (categoryId) => {
   return modelRegistry[categoryId] || null;
 };
+
+export const registerModelViewer = (categoryId, viewer) => {
+  if (viewer) {
+    modelViewers.set(categoryId, viewer);
+  } else {
+    modelViewers.delete(categoryId);
+  }
+};
+
+export const getModelViewer = (categoryId) => modelViewers.get(categoryId) || null;
 
 export const hasModel = (categoryId) => {
   return Boolean(modelRegistry[categoryId]?.hasModel);

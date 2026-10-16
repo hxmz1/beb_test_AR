@@ -11,36 +11,26 @@
   z-index: 1000;
 }
 
-.ar-viewer-content {
-  background-color: #f4f0e9;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 600px;
-  height: min(80vh, 680px);
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
+.ar-model-preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
 }
 
-.ar-viewer-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px;
-  border-bottom: 1px solid #eee;
-  color: #181514;
-}
-
-.ar-viewer-header h2 {
-  margin: 0;
-  font-size: 1.25rem;
-}
-
-.ar-viewer-header p {
-  margin: 5px 0 0;
-  color: #766b62;
-  font-size: 0.85rem;
+.ar-model-preloader.ar-model-active {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .product-ar-button {
@@ -54,63 +44,33 @@
   font: 700 12px 'DM Sans', sans-serif;
 }
 
+.product-ar-action {
+  display: grid;
+  justify-items: start;
+}
+
+.product-ar-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.product-ar-message {
+  margin: 6px 0 0;
+  color: #a32216;
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
 .product-ar-button:hover {
   background: #d94b1b;
 }
 
 .product-ar-button:focus-visible,
-.ar-viewer-close:focus-visible,
-.ar-viewer-ar-button:focus-visible {
+.ar-viewer-close:focus-visible {
   outline: 3px solid #ffbd2e;
   outline-offset: 3px;
 }
 
-model-viewer {
-  display: block;
-  flex: 1;
-  min-height: 0;
-  background-color: #f4f0e9;
-}
-
-.ar-viewer-message {
-  margin: 0;
-  padding: 10px 16px;
-  color: #51473f;
-  font-size: 0.85rem;
-  line-height: 1.4;
-}
-
-.ar-viewer-error {
-  color: #a32216;
-}
-
-.ar-viewer-close {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ar-viewer-close:hover {
-  opacity: 0.7;
-}
-
-.ar-viewer-ar-button {
-  background-color: #f15a24;
-  color: white;
-  border: none;
-  padding: 12px 18px;
-  border-radius: 2px;
-  font: 700 0.95rem 'DM Sans', sans-serif;
-  cursor: pointer;
-}
-
-.ar-viewer-ar-button:hover {
-  background-color: #d94b1b;
+.ar-model-preloader:focus {
+  outline: none;
 }

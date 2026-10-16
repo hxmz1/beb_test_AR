@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { menuCategories, restaurant } from './data/menu'
 import './App.css'
 import ProductARButton from '../tools/3d-generation/src/components/ProductARButton'
+import ARModelPreloader from '../tools/3d-generation/src/components/ARModelPreloader'
 
 const icon = (name) => <span className={`icon icon-${name}`} aria-hidden="true" />
 
@@ -11,7 +12,7 @@ function SocialIcon({ name }) {
   return <svg className="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.4 4.1c.3 1.8 1.3 2.9 3 3.1v3a8 8 0 0 1-3-.9v5.8a4.8 4.8 0 1 1-4.8-4.8c.3 0 .7 0 1 .1v3.1a1.8 1.8 0 1 0 .8 1.6V4.1h3Z" /></svg>
 }
 
-function Product({ product, featured = false, categoryId }) {
+function Product({ product, featured = false, categoryId, isModelReady }) {
   const [name, pricing] = product
   const isSized = typeof pricing === 'object'
 
@@ -21,7 +22,11 @@ function Product({ product, featured = false, categoryId }) {
       <div className="product-info">
         <h3>{name}</h3>
         {isSized ? <div className="sizes">{Object.entries(pricing).map(([size, price]) => <div className="size" key={size}><span>{size}</span><strong>{price}</strong></div>)}</div> : <strong className="price">{pricing}</strong>}
-        <ProductARButton categoryId={categoryId} productName={name} />
+        <ProductARButton
+          categoryId={categoryId}
+          productName={name}
+          isModelReady={isModelReady}
+        />
       </div>
     </article>
   )
@@ -29,9 +34,16 @@ function Product({ product, featured = false, categoryId }) {
 
 function App() {
   const [activeCategory, setActiveCategory] = useState('tacos')
+  const [readyModels, setReadyModels] = useState({})
+  const handleModelReady = useCallback((categoryId) => {
+    setReadyModels((current) => (
+      current[categoryId] ? current : { ...current, [categoryId]: true }
+    ))
+  }, [])
 
   return (
     <main>
+      <ARModelPreloader categories={menuCategories} onModelReady={handleModelReady} />
       <header className="hero" id="top">
         <nav className="topbar"><a className="brand-lockup" href="#top"><img className="brand-logo" src="/images/logo_restaurant.png" alt="Logo Pizzaria Beb Lhouma" /><span className="wordmark">PBL<span>.</span></span></a><a className="call-link" href="tel:+21658855100">Appeler {icon('arrow')}</a></nav>
         <div className="hero-content">
@@ -67,6 +79,7 @@ function App() {
                     product={product}
                     featured={category.id === 'pizza' && index === 0}
                     categoryId={category.id}
+                    isModelReady={Boolean(readyModels[category.id])}
                   />
                 ))}
               </div>

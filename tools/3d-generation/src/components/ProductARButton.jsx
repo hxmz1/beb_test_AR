@@ -1,12 +1,36 @@
 import { useState } from 'react';
-import { hasModel } from '../utils/modelRegistry';
-import ARViewer from './ARViewer';
+import { getModelViewer, hasModel } from '../utils/modelRegistry';
 
-const ProductARButton = ({ categoryId, productName }) => {
-  const [viewerOpen, setViewerOpen] = useState(false);
+const ProductARButton = ({ categoryId, productName, isModelReady }) => {
+  const [message, setMessage] = useState('');
 
-  const toggleViewer = () => {
-    setViewerOpen(!viewerOpen);
+  const launchAR = () => {
+    setMessage('');
+    const viewer = getModelViewer(categoryId);
+
+    if (!viewer?.loaded || !isModelReady) {
+      setMessage(viewer ? 'The 3D preview could not be loaded. Please try again later.' : 'The 3D preview is still loading. Please try again in a moment.');
+      return;
+    }
+
+    if (!viewer.canActivateAR) {
+      setMessage('Camera AR requires an AR-capable mobile device and browser.');
+      return;
+    }
+
+    viewer.classList.add('ar-model-active');
+
+    try {
+      viewer.activateAR().catch((error) => {
+        viewer.classList.remove('ar-model-active');
+        console.error('Unable to start camera AR:', error);
+        setMessage('Could not start camera AR. Check camera permission and try again.');
+      });
+    } catch (error) {
+      viewer.classList.remove('ar-model-active');
+      console.error('Unable to start camera AR:', error);
+      setMessage('Could not start camera AR. Check camera permission and try again.');
+    }
   };
 
   if (!hasModel(categoryId)) {
@@ -14,22 +38,17 @@ const ProductARButton = ({ categoryId, productName }) => {
   }
 
   return (
-    <>
+    <div className="product-ar-action">
       <button
         className="product-ar-button"
-        onClick={toggleViewer}
+        onClick={launchAR}
+        disabled={!isModelReady}
         aria-label={`View ${productName} using your camera`}
       >
-        View with camera
+        {isModelReady ? 'View with camera' : 'Preparing camera…'}
       </button>
-      {viewerOpen && (
-        <ARViewer
-          categoryId={categoryId}
-          productName={productName}
-          onClose={() => setViewerOpen(false)}
-        />
-      )}
-    </>
+      {message && <p className="product-ar-message" role="status">{message}</p>}
+    </div>
   );
 };
 
