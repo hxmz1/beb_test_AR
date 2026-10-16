@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { menuCategories, restaurant } from './data/menu'
 import './App.css'
+import ProductARButton from '../tools/3d-generation/src/components/ProductARButton'
 
 const icon = (name) => <span className={`icon icon-${name}`} aria-hidden="true" />
 
@@ -10,7 +11,7 @@ function SocialIcon({ name }) {
   return <svg className="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.4 4.1c.3 1.8 1.3 2.9 3 3.1v3a8 8 0 0 1-3-.9v5.8a4.8 4.8 0 1 1-4.8-4.8c.3 0 .7 0 1 .1v3.1a1.8 1.8 0 1 0 .8 1.6V4.1h3Z" /></svg>
 }
 
-function Product({ product, featured = false }) {
+function Product({ product, featured = false, categoryId }) {
   const [name, pricing] = product
   const isSized = typeof pricing === 'object'
 
@@ -20,6 +21,7 @@ function Product({ product, featured = false }) {
       <div className="product-info">
         <h3>{name}</h3>
         {isSized ? <div className="sizes">{Object.entries(pricing).map(([size, price]) => <div className="size" key={size}><span>{size}</span><strong>{price}</strong></div>)}</div> : <strong className="price">{pricing}</strong>}
+        <ProductARButton categoryId={categoryId} productName={name} />
       </div>
     </article>
   )
@@ -42,7 +44,35 @@ function App() {
       <section className="menu-section" id="menu">
         <div className="section-heading"><p className="kicker">A la carte</p><h2>Choisis ton<br /><em>envie.</em></h2><p>Des recettes généreuses, des prix clairs. Fais défiler les catégories et trouve ton classique.</p></div>
         <nav className="category-nav" aria-label="Categories du menu">{menuCategories.map((category) => <a className={activeCategory === category.id ? 'active' : ''} href={`#${category.id}`} key={category.id} onClick={() => setActiveCategory(category.id)}>{category.name}</a>)}</nav>
-        <div className="menu-list">{menuCategories.map((category, categoryIndex) => <section className="menu-category" id={category.id} key={category.id}><div className="category-title"><div><span className="category-number">0{categoryIndex + 1}</span><p className="kicker">{category.eyebrow}</p><h2>{category.name}</h2></div><div className="category-visual" style={{ backgroundImage: `url(${category.image})` }} role="img" aria-label={`Illustration ${category.name}`} /></div><div className="products-grid">{category.products.map((product, index) => <Product key={product[0]} product={product} featured={category.id === 'pizza' && index === 0} />)}</div></section>)}</div>
+        <div className="menu-list">
+          {menuCategories.map((category, categoryIndex) => (
+            <section className="menu-category" id={category.id} key={category.id}>
+              <div className="category-title">
+                <div>
+                  <span className="category-number">0{categoryIndex + 1}</span>
+                  <p className="kicker">{category.eyebrow}</p>
+                  <h2>{category.name}</h2>
+                </div>
+                <div
+                  className="category-visual"
+                  style={{ backgroundImage: `url(${category.image})` }}
+                  role="img"
+                  aria-label={`Illustration ${category.name}`}
+                />
+              </div>
+              <div className="products-grid">
+                {category.products.map((product, index) => (
+                  <Product
+                    key={product[0]}
+                    product={product}
+                    featured={category.id === 'pizza' && index === 0}
+                    categoryId={category.id}
+                  />
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
       </section>
 
       <section className="social-section" aria-labelledby="social-title"><div className="social-heading"><p className="kicker">La famille Beb Lhouma</p><h2 id="social-title">Reste dans<br /><em>le mouvement.</em></h2></div><div className="social-grid">{Object.entries(restaurant.socials).map(([name, url]) => <a className="social-card" href={url} target="_blank" rel="noreferrer" key={name}><span className="social-card-icon"><SocialIcon name={name} /></span><span><small>Retrouve-nous sur</small><strong>{name}</strong></span>{icon('arrow')}</a>)}</div></section>

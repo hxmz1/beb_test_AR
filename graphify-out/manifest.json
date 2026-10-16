@@ -1,0 +1,146 @@
+{
+  "eslint.config.js": {
+    "mtime": 1790339543.76114,
+    "seen": 1791806039.4630454,
+    "ast_hash": "3aa4b57d7f08181d86bde52a4dcb7f22",
+    "semantic_hash": "3aa4b57d7f08181d86bde52a4dcb7f22"
+  },
+  "package.json": {
+    "mtime": 1790339543.761647,
+    "seen": 1791806039.4630454,
+    "ast_hash": "b7ac3f0876258427840d30a9e1796465",
+    "semantic_hash": "b7ac3f0876258427840d30a9e1796465"
+  },
+  "src/App.jsx": {
+    "mtime": 1790346337.03425,
+    "seen": 1791806039.4630454,
+    "ast_hash": "eac0bab79c2c64534b66292144d6749f",
+    "semantic_hash": "eac0bab79c2c64534b66292144d6749f"
+  },
+  "src/data/menu.js": {
+    "mtime": 1790350680.1934156,
+    "seen": 1791806039.4630454,
+    "ast_hash": "4dd833a1eb5351d33b96078aa40de692",
+    "semantic_hash": "4dd833a1eb5351d33b96078aa40de692"
+  },
+  "src/main.jsx": {
+    "mtime": 1790339463.1306274,
+    "seen": 1791806039.4630454,
+    "ast_hash": "e13723e2574429d9a6d849727e3ff695",
+    "semantic_hash": "e13723e2574429d9a6d849727e3ff695"
+  },
+  "vite.config.js": {
+    "mtime": 1790339463.1326284,
+    "seen": 1791806039.4630454,
+    "ast_hash": "5d54447744c19ccd28638a5c668d15ea",
+    "semantic_hash": "5d54447744c19ccd28638a5c668d15ea"
+  },
+  ".github/copilot-instructions.md": {
+    "mtime": 1791805526.3294103,
+    "seen": 1791806039.4630454,
+    "ast_hash": "2b23503628bf2ec71d067a85ca8948ab",
+    "semantic_hash": "2b23503628bf2ec71d067a85ca8948ab"
+  },
+  "README.md": {
+    "mtime": 1790339543.769574,
+    "seen": 1791806039.4630454,
+    "ast_hash": "a28dc4cb878325f3e9e5649f3e1469ac",
+    "semantic_hash": "a28dc4cb878325f3e9e5649f3e1469ac"
+  },
+  "index.html": {
+    "mtime": 1790345731.023215,
+    "seen": 1791806039.4630454,
+    "ast_hash": "3d6c698654e6c69f1f2f342189170216",
+    "semantic_hash": "3d6c698654e6c69f1f2f342189170216"
+  },
+  "note restaurant.txt": {
+    "mtime": 1790341488.234385,
+    "seen": 1791806039.4630454,
+    "ast_hash": "52c0d5a1e09ec7bceb41fd485c4fd718",
+    "semantic_hash": "52c0d5a1e09ec7bceb41fd485c4fd718"
+  },
+  "public/favicon.svg": {
+    "mtime": 1790339463.1203167,
+    "seen": 1791806039.4630454,
+    "ast_hash": "7e840862161341271697daa99a40d76b",
+    "semantic_hash": "7e840862161341271697daa99a40d76b"
+  },
+  "public/icons.svg": {
+    "mtime": 1790339463.122494,
+    "seen": 1791806039.4630454,
+    "ast_hash": "3b4fcfcf393eca4d264dca4a4663bc37",
+    "semantic_hash": "3b4fcfcf393eca4d264dca4a4663bc37"
+  },
+  "public/images/logo_restaurant.png": {
+    "mtime": 1790344904.1577382,
+    "seen": 1791806039.4630454,
+    "ast_hash": "6cf756d4490dd98e42b71512038a8bf8",
+    "semantic_hash": "6cf756d4490dd98e42b71512038a8bf8"
+  },
+  "public/images/menu/baguette.png": {
+    "mtime": 1790348901.3528905,
+    "seen": 1791806039.4630454,
+    "ast_hash": "b3857648a241e84b19155f53b27d0d8b",
+    "semantic_hash": "b3857648a241e84b19155f53b27d0d8b"
+  },
+  "public/images/menu/libanais.jpg": {
+    "mtime": 1790350033.5619755,
+    "seen": 1791806039.4630454,
+    "ast_hash": "42b70dd71ba817a0031f536bac52187b",
+    "semantic_hash": "42b70dd71ba817a0031f536bac52187b"
+  },
+  "public/images/menu/libanais1.png": {
+    "mtime": 1790350614.5210445,
+    "seen": 1791806039.4630454,
+    "ast_hash": "aa4f85e1ccd139f59d76fecc215391fe",
+    "semantic_hash": "aa4f85e1ccd139f59d76fecc215391fe"
+  },
+  "public/images/menu/pizza.jpg": {
+    "mtime": 1790350064.2559345,
+    "seen": 1791806039.4630454,
+    "ast_hash": "79fd3447684182976132aa7d34acaa87",
+    "semantic_hash": "79fd3447684182976132aa7d34acaa87"
+  },
+  "public/images/menu/pizza1.png": {
+    "mtime": 1790350651.285352,
+    "seen": 1791806039.4630454,
+    "ast_hash": "c1edaec027e76a55ab8273ad827332f4",
+    "semantic_hash": "c1edaec027e76a55ab8273ad827332f4"
+  },
+  "public/images/menu/pizza_tranche.png": {
+    "mtime": 1790350215.412907,
+    "seen": 1791806039.4630454,
+    "ast_hash": "c9553933faa4428805b2d3dfab426d6d",
+    "semantic_hash": "c9553933faa4428805b2d3dfab426d6d"
+  },
+  "public/images/menu/sandwich.png": {
+    "mtime": 1790349139.9888406,
+    "seen": 1791806039.4630454,
+    "ast_hash": "6fed883dad27c10724aa10c5b508d4bc",
+    "semantic_hash": "6fed883dad27c10724aa10c5b508d4bc"
+  },
+  "public/images/menu/tacos.png": {
+    "mtime": 1790346688.5555465,
+    "seen": 1791806039.4630454,
+    "ast_hash": "0b49e45307c0d5208fecf1286736b2cb",
+    "semantic_hash": "0b49e45307c0d5208fecf1286736b2cb"
+  },
+  "src/assets/hero.png": {
+    "mtime": 1790339463.125626,
+    "seen": 1791806039.4630454,
+    "ast_hash": "aead493361b27e7510691c5d7072dfc1",
+    "semantic_hash": "aead493361b27e7510691c5d7072dfc1"
+  },
+  "src/assets/react.svg": {
+    "mtime": 1790339463.1276257,
+    "seen": 1791806039.4630454,
+    "ast_hash": "f0402b67b6ce880f65666bb49e841696",
+    "semantic_hash": "f0402b67b6ce880f65666bb49e841696"
+  },
+  "src/assets/vite.svg": {
+    "mtime": 1790339463.1286254,
+    "seen": 1791806039.4630454,
+    "ast_hash": "9960a24288958394ac50e57ff638b036",
+    "semantic_hash": "9960a24288958394ac50e57ff638b036"
+  }
+}
